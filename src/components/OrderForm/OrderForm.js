@@ -14,12 +14,14 @@ const OrderForm = () => {
     setIngredients([]);
   }
 
-  const handleIngredientChange = () => {
-
-  }
-
-  const handleNameChange = () => {
-
+  const handleIngredientChange = (actionIng, checked) => {
+    if (checked) {
+      return setIngredients([...ingredients, actionIng])
+    }
+    if (!checked) {
+      const updated = ingredients.filter(ing => ing !== actionIng)
+      return setIngredients([...updated])
+    }
   }
 
   const possibleIngredients = ['beans', 'steak', 'carnitas', 'sofritas', 'lettuce', 'queso fresco', 'pico de gallo', 'hot sauce', 'guacamole', 'jalapenos', 'cilantro', 'sour cream'];
@@ -30,13 +32,16 @@ const OrderForm = () => {
       <input
         type="checkbox"
         id={ ingredient }
+        key={ `${ingredient}-checkbox` }
         name="burritoIng"
         value={ ingredient }
+        onChange={event => handleIngredientChange(event.target.value, event.target.checked) }
         />
       <label for={ ingredient }>{ ingredient }</label>
       </>
     )
   });
+
 
   return (
     <form>
@@ -45,7 +50,7 @@ const OrderForm = () => {
         placeholder='Name'
         name='name'
         value={ name }
-        onChange={e => this.handleNameChange(e.target.value)}
+        onChange={e => setName(e.target.value)}
       />
       
       { ingredientButtons }
