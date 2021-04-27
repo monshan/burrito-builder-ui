@@ -37,4 +37,11 @@ describe('Order Form Functionality', () => {
       .children()
       .should('contain', 'Finn')
   })
+
+  it('Should not be able to add an order if user does not enter name or ingredients', () => {
+    cy.get('[data-cy=submit]').click()
+    cy.on('window:alert', (str) => {
+      expect(str).to.equal("Please enter both a Name and at least 1 ingredient to place an order!")
+    })
+  })
 })
