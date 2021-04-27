@@ -15,7 +15,7 @@ const App = () => {
     getOrders()
       .then(result => setOrders(result.orders))
       .catch(err => console.error('Error fetching:', err));
-  }, [orders])
+  }, [])
   
   return (
     <main className="App">
@@ -25,7 +25,6 @@ const App = () => {
           addOrder={ addOrder }
         />
       </header>
-
       <Orders
         orders={orders}
       />

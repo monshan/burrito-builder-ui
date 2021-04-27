@@ -12,7 +12,7 @@ const OrderForm = ({ addOrder }) => {
         name: name,
         ingredients: ingredients
       }
-      return postOrder(newOrder)
+      postOrder(newOrder)
         .then(response => {
           if (response.ok) {
             return addOrder(response)
