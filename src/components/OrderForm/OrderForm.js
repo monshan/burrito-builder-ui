@@ -61,7 +61,9 @@ const OrderForm = ({ addOrder }) => {
 
 
   return (
-    <form>
+    <form
+      data-cy="form"
+    >
       <input
         type='text'
         placeholder='Name'
