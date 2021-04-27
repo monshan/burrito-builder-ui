@@ -53,6 +53,7 @@ const OrderForm = ({ addOrder }) => {
         name="burritoIng"
         value={ ingredient }
         onChange={event => handleIngredientChange(event.target.value, event.target.checked) }
+        data-cy={ ingredient }
         />
       <label for={ ingredient }>{ ingredient }</label>
       </>
@@ -70,13 +71,18 @@ const OrderForm = ({ addOrder }) => {
         name='name'
         value={ name }
         onChange={e => setName(e.target.value)}
+        data-cy="name-input"
       />
-      
-      { ingredientButtons }
+      <section data-cy="ingredient-btns">
+        { ingredientButtons }
+      </section>
 
       <p>Order: { ingredients.join(', ') || 'Nothing selected' }</p>
 
-      <button onClick={e => handleSubmit(e)}>
+      <button
+        onClick={e => handleSubmit(e)}
+        data-cy="submit"
+      >
         Submit Order
       </button>
     </form>
