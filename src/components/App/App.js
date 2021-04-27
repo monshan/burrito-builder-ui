@@ -42,10 +42,12 @@ const App = () => {
     <main className="App">
       <header>
         <h1>Burrito Builder</h1>
-        <OrderForm />
+        <OrderForm/>
       </header>
 
-      <Orders orders={orders}/>
+      <Orders
+        orders={orders}
+      />
     </main>
   );
 }
