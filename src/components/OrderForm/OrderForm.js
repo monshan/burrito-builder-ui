@@ -6,8 +6,18 @@ const OrderForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    this.clearInputs();
+    if (name && ingredients.length) {
+      
+      this.clearInputs();
+    }
+    return window.alert("Please enter both a Name and at least 1 ingredient to place an order!")
   }
+
+  // const errorHandleFormCompletion = () => {
+  //   if (!name || !ingredients) {
+  //     return window.alert("Please enter both a Name and at least 1 ingredient to place an order!")
+  //   }
+  // }
 
   const clearInputs = () => {
     setName('');
@@ -57,7 +67,7 @@ const OrderForm = () => {
 
       <p>Order: { ingredients.join(', ') || 'Nothing selected' }</p>
 
-      <button onClick={e => this.handleSubmit(e)}>
+      <button onClick={e => handleSubmit(e)}>
         Submit Order
       </button>
     </form>
