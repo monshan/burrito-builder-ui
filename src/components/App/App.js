@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import './App.css';
-import {getOrders} from '../../apiCalls';
+import { getOrders, deleteOrder } from '../../apiCalls';
 import Orders from '../../components/Orders/Orders';
 import OrderForm from '../../components/OrderForm/OrderForm';
 
@@ -9,6 +9,12 @@ const App = () => {
 
   const addOrder = (newOrder) => {
     setOrders([...orders, newOrder])
+  }
+
+  const removeOrder = (toRemove) => {
+    const updated = orders.filter(order => order.id !== toRemove)
+    setOrders([...updated])
+    deleteOrder(toRemove)
   }
 
   useEffect(() => {
@@ -27,6 +33,7 @@ const App = () => {
       </header>
       <Orders
         orders={orders}
+        removeOrder={ removeOrder }
       />
     </main>
   );

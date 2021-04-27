@@ -21,7 +21,6 @@ const OrderForm = ({ addOrder }) => {
         })
         .then(() => clearInputs())
         .catch(err => console.log(err));
-      // return clearInputs();
     }
     return window.alert("Please enter both a Name and at least 1 ingredient to place an order!")
   }
